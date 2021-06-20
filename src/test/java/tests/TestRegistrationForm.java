@@ -1,14 +1,10 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pages.RegPage;
 import utils.RandomUtils;
 
@@ -18,7 +14,7 @@ import static io.qameta.allure.Allure.step;
 
 @Feature("Issue")
 @Owner("eropkinpyu")
-public class TestRegFormWithFakerAndRandomUtilsAndPageObjects extends TestBase {
+public class TestRegistrationForm extends TestBase {
 
 
     RegPage regPage = new RegPage();
@@ -42,14 +38,15 @@ public class TestRegFormWithFakerAndRandomUtilsAndPageObjects extends TestBase {
     String[] hobby = new String[]{"Sports", "Reading", "Music"};
 
     @Test
-    @Story("Проверка формы регистрации")
+    @Story("Test Registration Form")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "automation-practice-form", url = "https://demoqa.com/automation-practice-form")
-    @DisplayName("Проверка заполнения формы регистрации")
+    @DisplayName("Test Registration Form")
     void testRegistrationForm() {
         open("https://demoqa.com/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(
                 text("Student Registration Form"));
+
         step("Заполнение вормы регистрации", () -> {
             step("Заполняем основные поля", (s) -> {
                 s.parameter("Имя", firstName);
@@ -79,7 +76,7 @@ public class TestRegFormWithFakerAndRandomUtilsAndPageObjects extends TestBase {
                 regPage.selectHobby(hobby[2]);
             });
             if ($("#fixedban").exists()) {
-                step("Убираем баннер с рекламой от google...", () -> {
+                step("Убираем баннер с рекламой от google... (>_<)", () -> {
                     Selenide.executeJavaScript
                             ("let div = document.getElementById('fixedban');" +
                                     "div.remove();");

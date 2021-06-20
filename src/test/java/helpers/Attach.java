@@ -5,7 +5,6 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -48,6 +47,7 @@ public class Attach {
 //                + "' type='video/mp4'></video></body></html>";
 //    }
 //
+
     public static void addVideo(String sessionId) {
         URL videoUrl = getVideoUrl(sessionId);
         if (videoUrl != null) {

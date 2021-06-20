@@ -17,7 +17,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class TestBase {
     @BeforeAll
     static void mainSetup() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        //SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         Configuration.startMaximized = true;
         DesiredCapabilities capabilities = new DesiredCapabilities();
