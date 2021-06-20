@@ -38,16 +38,16 @@ public class TestRegistrationForm extends TestBase {
     String[] hobby = new String[]{"Sports", "Reading", "Music"};
 
     @Test
-    @Story("Test Registration Form")
+    @Story("Тестирование формы регистрации студента")
     @Severity(SeverityLevel.NORMAL)
     @Link(value = "automation-practice-form", url = "https://demoqa.com/automation-practice-form")
-    @DisplayName("Test Registration Form")
+    @DisplayName("Тест формы регистрации студента")
     void testRegistrationForm() {
         open("https://demoqa.com/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(
                 text("Student Registration Form"));
 
-        step("Заполнение вормы регистрации", () -> {
+        step("Заполнение формы регистрации", () -> {
             step("Заполняем основные поля", (s) -> {
                 s.parameter("Имя", firstName);
                 s.parameter("Фамилия", lastName);
@@ -60,11 +60,11 @@ public class TestRegistrationForm extends TestBase {
                 regPage.selectGender(gender);
                 regPage.addPhone(mobile);
             });
-            step("Заполняем дату дня рождения", (s) -> {
+            step("Заполняем дату рождения", (s) -> {
                 s.parameter("Дата рождения", day + ", " + month + ", " + year);
                 regPage.setBirthDay(day, month, year);
             });
-            step("Выбираем предметы обучения", (s) -> {
+            step("Выбираем предметы для изучения", (s) -> {
                 s.parameter("Первый предмет", subject1);
                 s.parameter("Первый предмет", subject2);
                 regPage.addSubject(subject1);
@@ -82,7 +82,7 @@ public class TestRegistrationForm extends TestBase {
                                     "div.remove();");
                 });
             }
-            step("Заполняем адрес проживания", (s) -> {
+            step("Заполняем адрес", (s) -> {
                 s.parameter("адрес", currentAddress);
                 regPage.addAddress(currentAddress);
             });
@@ -116,7 +116,7 @@ public class TestRegistrationForm extends TestBase {
                         text(state + " " + city)
                 );
             });
-            step("Закрываем и проверяем отсудствие модального окна с данными регистрации", () -> {
+            step("Закрываем и проверяем отсудствие модального окна с данными формы регистрации", () -> {
                 $("#closeLargeModal").click();
                 $(".modal-content").shouldBe(disappear);
             });
