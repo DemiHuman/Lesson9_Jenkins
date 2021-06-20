@@ -1,7 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -17,7 +16,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class TestBase {
     @BeforeAll
     static void mainSetup() {
-        //SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         Configuration.startMaximized = true;
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -28,7 +27,7 @@ public class TestBase {
     }
 
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         String sessionId = getSessionId();
 
         Attach.screenshotAs("Last screenshot");
@@ -39,7 +38,7 @@ public class TestBase {
         Attach.addVideo(sessionId);
     }
 
-    public static String getSessionId(){
+    public static String getSessionId() {
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
     }
 }
