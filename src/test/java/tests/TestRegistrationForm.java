@@ -12,8 +12,8 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-@Feature("Issue")
-@Owner("eropkinpyu")
+//@Feature("Issue")
+//@Owner("eropkinpyu")
 public class TestRegistrationForm extends TestBase {
 
 
@@ -37,11 +37,12 @@ public class TestRegistrationForm extends TestBase {
 
     String[] hobby = new String[]{"Sports", "Reading", "Music"};
 
+
+//    @Story("Тестирование формы регистрации студента")
+//    @Severity(SeverityLevel.NORMAL)
+//    @Link(value = "automation-practice-form", url = "https://demoqa.com/automation-practice-form")
+//    @DisplayName("Тест формы регистрации студента")
     @Test
-    @Story("Тестирование формы регистрации студента")
-    @Severity(SeverityLevel.NORMAL)
-    @Link(value = "automation-practice-form", url = "https://demoqa.com/automation-practice-form")
-    @DisplayName("Тест формы регистрации студента")
     void testRegistrationForm() {
         open("https://demoqa.com/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(
