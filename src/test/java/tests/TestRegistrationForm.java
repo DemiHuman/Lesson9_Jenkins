@@ -33,7 +33,8 @@ public class TestRegistrationForm extends TestBase {
             subject2 = "English",
             currentAddress = faker.address().fullAddress(),
             state = "Haryana",
-            city = "Karnal";
+            city = "Karnal",
+            url = "https://demoqa.com/automation-practice-form";
 
     String[] hobby = new String[]{"Sports", "Reading", "Music"};
 
@@ -43,10 +44,13 @@ public class TestRegistrationForm extends TestBase {
     @Link(value = "automation-practice-form", url = "https://demoqa.com/automation-practice-form")
     @DisplayName("Тест формы регистрации студента")
     void testRegistrationFormWithSteps() {
-        open("https://demoqa.com/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(
-                text("Student Registration Form"));
 
+        step("Открывает страницу с формой регистрации студента", (s) -> {
+            s.parameter("url", url);
+            open(url);
+            $(".practice-form-wrapper").shouldHave(
+                    text("Student Registration Form"));
+        });
         step("Заполнение формы регистрации", () -> {
             step("Заполняем основные поля", (s) -> {
                 s.parameter("Имя", firstName);
@@ -122,52 +126,4 @@ public class TestRegistrationForm extends TestBase {
             });
         });
     }
-
-//    @Test
-//    void testRegistrationForm() {
-//        open("https://demoqa.com/automation-practice-form");
-//        $(".practice-form-wrapper").shouldHave(
-//                text("Student Registration Form"));
-//
-//        regPage.addFirstName(firstName);
-//        regPage.addLastName(lastName);
-//        regPage.addEmail(email);
-//        regPage.selectGender(gender);
-//        regPage.addPhone(mobile);
-//        regPage.setBirthDay(day, month, year);
-//        regPage.addSubject(subject1);
-//        regPage.addSubject(subject2);
-//        regPage.selectHobby(hobby[0]);
-//        regPage.selectHobby(hobby[1]);
-//        regPage.selectHobby(hobby[2]);
-//        if ($("#fixedban").exists()) {
-//            Selenide.executeJavaScript
-//                    ("let div = document.getElementById('fixedban');" +
-//                            "div.remove();");
-//        }
-//        regPage.addAddress(currentAddress);
-//
-//        regPage.selectState(state);
-//        regPage.selectCity(city);
-//        $("#submit").click();
-//
-//        //Checking_After_The_Filling_Reg_Form
-//        $("#example-modal-sizes-title-lg").shouldHave(
-//                text("Thanks for submitting the form"));
-//        $(".table-responsive").shouldHave(
-//                text(firstName + " " + lastName),
-//                text(email),
-//                text("Other"),
-//                text(mobile),
-//                text(day + " " + month + "," + year),
-//                text(subject1 + ", " + subject2),
-//                text(hobby[0] + ", " + hobby[1] + ", " + hobby[2]),
-//                text(currentAddress),
-//                text(state + " " + city)
-//        );
-//
-//        $("#closeLargeModal").click();
-//        $(".modal-content").shouldBe(disappear);
-//    }
-
 }
